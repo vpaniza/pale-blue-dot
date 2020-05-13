@@ -1,0 +1,399 @@
+@import "_variables.scss";
+
+.wrap-header {
+    position: relative;
+    width: 100vw;
+    height: 44px;
+    z-index: 3;
+    .menu-nav {
+        clear: both;
+        list-style: none;
+        overflow: hidden;
+        background-color: $menu-color;
+        max-height: 0;
+        transition: max-height .2s ease-out;
+        li {
+            line-height: 28px;
+            a {
+                display: block;
+                padding-bottom: 12px;
+                padding-top: 12px;
+                font-family: $ibm-mono;
+                text-transform: uppercase;
+                color: $menu-font-color;
+                &:hover {
+                    background-color: rgba(white, 1);
+                    color: $menu-color;
+                }
+            }
+            .episodios {
+                padding-top: 16px;
+            }
+            .topicos {
+                padding-bottom: 24px;
+            }
+        }
+    }
+
+    .logo {
+        display: block;
+        float: left;
+        height: 24px;
+        width: 24px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 16px;   
+    }
+
+    .menu-icon {
+        position: relative;
+        float: right;
+        margin-right: 16px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        .navicon {
+            transition: background .2 ease-out;
+            &::after {
+                font-family: FontAwesome;
+                content: "\f0c9";
+                font-size: 18px;
+                transition: all .2s ease-out;
+            }
+        }
+    }
+
+    .menu-btn {
+        display: none;
+        &:checked ~ .menu-nav {
+            max-height: 224px; //corresponde a la transition hecha previamente en .menu-nav
+        }
+        &:checked ~ .menu-icon .navicon {
+            &::after {
+                font-family: FontAwesome;
+                content: "\f00d";
+                font-size: 18px;
+                transition: all .2s ease-out;
+            }
+        }
+    }
+}
+
+.wrap-maincontent {
+    width: 100vw;
+    margin-top: 29px;
+    margin-bottom: 24px;
+    position: relative;
+
+    .main-title {
+        margin-left: 5vw;
+        margin-right: 5vw;
+        display: inline-block;
+        font-size: 0px;
+        color: $font-color;
+        font-family: $ibm-sans;
+
+        .title-1, .title-2, .tachado, .title-dot{
+            font-size: $mb-header-font-size;
+            line-height: $mb-header-line-height;
+            //margin: 0 auto;          
+        }
+        .tachado {
+            text-decoration: line-through;
+            &::after{
+                content: "\A";
+                white-space: pre;
+            }
+        }
+    }
+    .main-description {
+        margin-left: 5vw;
+        margin-right: 5vw;
+        max-width: 90vw;
+        font-family: $ibm-mono;
+        margin-top: 16px;
+        line-height: $mb-main-line-height;
+        font-size: $mb-main-font-size;
+    }
+    .button-conocemas {
+        color: $font-color; 
+        div{
+            margin-left: 5vw;
+            margin-right: 5vw;
+            margin-top: 36px;
+            height: 48px;
+            width: 90vw;
+            text-align: center;
+            text-transform: uppercase;
+            background-color: #00F3BB;
+            font-family: $ibm-mono;
+            font-weight: 500;
+            font-size: $mb-button-font-size;
+            line-height: 48px;
+            cursor: pointer;
+        } 
+    }
+}
+
+.wrap-episodios {
+    width: 100vw;
+    height: 1203.5px;
+    display: block;
+    position: relative;
+    .parallelogram {
+        position: absolute;
+        width: 100vw;
+        height: 100%;
+        overflow: hidden;
+        transform-origin: top left;
+        transform: translate(0px, 8.75vw) skewY(-5deg); //@NOTA: los 8.75vw los saque de hacer tan(5)=x/320
+        white-space: nowrap;
+        background-image: linear-gradient(225deg, #0000FF 0%, #0000A3 100%);
+
+        .content-container {
+            overflow: hidden;
+            transform: skewY(5deg);
+            padding-top: 15.625vw; //al padding del template le reste la mitad de la traslación (64-28/2)
+            #sec-episodios {
+                margin-left: 5%;
+                color: white;
+                font-family: $ibm-sans;
+                line-height: $mb-header-line-height;
+                font-size: $mb-header-font-size;
+            }
+            .podcasts{
+                margin-top: 21px;
+                margin-left: 11px;
+                margin-right: 11px;
+                .pods-grid {
+                    display: grid;
+                    grid-template-columns:repeat(1, 1fr);
+                    grid-column-gap: 11px;
+                    grid-row-gap: 11px;
+                    iframe{
+                        width: 100%;
+                        height: 232px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.sec-nosotros{
+    .phone-outer {
+        display: block;
+        position: relative;
+        width: 100vw;
+        overflow: visible;
+        margin-top: -67.5px;
+        @media all and (min-width: 600px){ //breakpoint for tablets
+            margin-top: 0;
+        }
+        .phone-inner {
+            display: inline-block;
+            position: relative;
+            .phone-image {
+                position: relative;
+                width: 340px;
+            }
+        }
+    }
+    .dedonde-cont {
+        display: block;
+        margin-top: 27px;
+        .sec-dedonde {
+            margin-left: 5vw;
+            margin-right: 5vw;
+            font-size: $mb-header-font-size;
+            font-family: $ibm-sans;
+            line-height: $mb-header-line-height;
+            color: $font-color;
+        }
+        .dedonde-text {
+            margin-top: 8px;
+            margin-left: 5vw;
+            margin-right: 5vw;
+            font-family: $ibm-mono;
+            line-height: $mb-main-line-height;
+            font-size: $mb-main-font-size;
+            color: $font-color;
+        }
+    }
+}
+
+.invitados-container {
+    display: block;
+    .sec-invitados {
+        margin-top: 54px;
+        margin-left: 5vw;
+        margin-right: 5vw;
+        margin-bottom: 14px;
+        font-family: $ibm-sans;
+        font-size: $mb-header-font-size;
+        line-height: $mb-header-line-height;
+        color: $font-color;
+    }
+    .img-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+        div {
+            img {
+                width: 100%;
+                max-width: 360px;
+                height: auto;
+            }
+        }
+    }
+}
+
+.temas-cont{
+    display: block;
+    margin-bottom: 42px;
+    .temas-tit {
+        margin-top: 54px;
+        margin-left: 5vw;
+        margin-right: 5vw;
+        @media all and (min-width: 600px){ //breakpoint for tablets
+            text-align: center;
+        }
+        font-family: $ibm-sans;
+        font-size: $mb-header-font-size;
+        line-height: $mb-header-line-height;
+        color: $font-color;
+    }
+    .iconos {
+        .icon-container {
+            width: 100vw;
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            .icon{
+                width: 104px;
+                height: 104px;
+                align-self: center;
+                margin-bottom: 13px;
+            }
+            #t-remoto{
+                margin-top: 37px;
+            }
+            #programacion{
+                margin-top: 49px;
+            }
+            #codigo{
+                margin-top: 65px;
+            }
+            #seguridad{
+                margin-top: 65px;
+            }
+            p {
+                margin-left: 5vw;
+                margin-right: 5vw;
+                font-family: $ibm-sans;
+                font-size: $subheader-font-size;
+                font-weight: 600;
+                line-height: 32px;
+                color: $font-color;
+                text-align: center;
+            }
+        }
+    }
+    
+}
+
+.novedades-cont {
+    width: 100vw;
+    min-height: 341px;
+    @media all and (min-width: 600px){ //breakpoint for tablets
+        min-height: 280px;
+    }
+    display: block;
+    position: relative;
+    text-align: center;
+    background: linear-gradient(225deg, #0000FF 0%, #0000A3 100%);
+    .triangle {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 8.75vw 100vw 0 0;
+        border-color: white transparent transparent transparent;
+    }
+    #sec-novedades {
+        display: inline-block;
+        width: 90vw;
+        margin-left: 5vw;
+        margin-right: 5vw;
+        margin-top: 64px;
+        @media all and (min-width: 600px){ //breakpoint for tablets
+            margin-left: 20vw;
+            margin-right: 20vw;
+            margin-top: 80px;
+            width: 60vw;
+        }
+        text-align: center;
+        color: white;
+        font-family: $ibm-sans;
+        font-size: $mb-header-font-size;
+        line-height: $mb-header-line-height;
+    }
+    .button-escucha{
+        color: $font-color; 
+        div {
+            margin-left: 5vw;
+            margin-right: 5vw;
+            height: 48px;
+            width: 90vw;
+            @media all and (min-width: 600px){ //breakpoint for tablets
+                margin-left: 20vw;
+                margin-right: 20vw;
+                width: 60vw;
+            }
+            margin-top: 36px;
+            text-align: center;
+            text-transform: uppercase;
+            background-color: #00F3BB;
+            font-family: $ibm-mono;
+            font-weight: 500;
+            font-size: $mb-button-font-size;
+            line-height: 48px;
+            cursor: pointer;   
+        }
+    }
+}
+
+footer {
+    margin-top: 24px;
+    .copyright {
+        font-family: $ibm-mono;
+        font-size: $mb-main-font-size;
+        line-height: $mb-main-line-height;
+        color: $font-color;
+        text-align: center;
+    }
+    .media-symbols {
+        margin-top: 16px;
+        margin-bottom: 31px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+        align-items: center;
+        font-family: FontAwesome;
+        font-size: 16px;
+        line-height: 28px;
+        a{
+            text-decoration: none;
+            color: $font-color;
+            cursor: pointer;
+        }   
+    }
+}

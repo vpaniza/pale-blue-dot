@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,500|IBM+Plex+Sans:400,600&display=swap');
+@import "_variables.scss";
+
+
+body{
+    color: $font-color;
+}
+
+@import "_mobile.scss";
+
+@media all and (min-width: $pc-size-min){
+    @import "_desktop.scss";
+}
